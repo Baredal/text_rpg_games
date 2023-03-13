@@ -27,7 +27,10 @@ class Character:
         '''
         Describes character
         '''
-        print(f'{self.char} is here!\n{self.descrpt}')
+        if isinstance(self, Enemy):
+            print(f'{self.char} is here! (enemy)\n{self.descrpt}')
+        else:
+            print(f'{self.char} is here! (friend)\n{self.descrpt}')
     def talk(self):
         '''
         Character talking
@@ -119,6 +122,16 @@ class Enemy(Character):
         Returns wins against enemies (enemies loses)
         '''
         return self.loses
+
+class Friend(Character):
+    '''
+    Attributes for friend
+    '''
+    def __init__(self, char: str, descrpt) -> None:
+        '''
+        Init of friend (gives tips)
+        '''
+        super().__init__(char, descrpt)
 
 class Item:
     '''
